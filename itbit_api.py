@@ -85,6 +85,14 @@ class itBitApiConnection(object):
         response = self.make_request("GET", path, {})
         return response
 
+    #returns a list of funding history for a wallet
+    #  response will be paginated and limited to 50 items per response
+    def get_funding_history(self, walletId, filters={}):
+        queryString = self._generate_query_string(filters)
+        path = "/wallets/%s/funding_history%s" % (walletId, queryString)
+        response = self.make_request("GET", path, {})
+        return response
+
     #returns a list of orders for a wallet
     #  response will be paginated and limited to 50 items per response
     #  orders can be filtered by status (ex: open, filled, etc)
