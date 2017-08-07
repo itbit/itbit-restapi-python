@@ -112,7 +112,7 @@ class itBitApiConnection(object):
     def create_order_with_display(self, walletId, side, currency, amount, price, display ,instrument):
         path = "/wallets/%s/orders/" % (walletId)
         response = self.make_request("POST", path, {'type': 'limit', 'currency': currency, 'side': side, 'amount': amount, 'price': price, 'display': display, 'instrument': instrument})
-        return response 
+        return response
 
     #returns a specific order by order id
     def get_order(self, walletId, orderId):
@@ -159,8 +159,8 @@ class itBitApiConnection(object):
 
         auth_headers = {
             'Authorization': self.clientKey + ':' + signature.decode('utf8'),
-            'X-Auth-Timestamp': timestamp,
-            'X-Auth-Nonce': nonce,
+            'X-Auth-Timestamp': str(timestamp),
+            'X-Auth-Nonce': str(nonce),
             'Content-Type': 'application/json'
         }
 
