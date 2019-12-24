@@ -159,8 +159,8 @@ class itBitApiConnection(object):
 
         auth_headers = {
             'Authorization': self.clientKey + ':' + signature.decode('utf8'),
-            'X-Auth-Timestamp': timestamp,
-            'X-Auth-Nonce': nonce,
+            'X-Auth-Timestamp': str(timestamp),
+            'X-Auth-Nonce': str(nonce),
             'Content-Type': 'application/json'
         }
 
