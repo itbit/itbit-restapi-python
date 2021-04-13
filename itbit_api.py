@@ -104,15 +104,9 @@ class itBitApiConnection(object):
 
     #creates a new limit order
     def create_order(self, walletId, side, currency, amount, price, instrument):
-        path = "/wallets/%s/orders/" % (walletId)
+        path = "/wallets/%s/orders" % (walletId)
         response = self.make_request("POST", path, {'type': 'limit', 'currency': currency, 'side': side, 'amount': amount, 'price': price, 'instrument': instrument})
         return response
-
-    #creates a new limit order with a specific display amount (iceberg order)
-    def create_order_with_display(self, walletId, side, currency, amount, price, display ,instrument):
-        path = "/wallets/%s/orders/" % (walletId)
-        response = self.make_request("POST", path, {'type': 'limit', 'currency': currency, 'side': side, 'amount': amount, 'price': price, 'display': display, 'instrument': instrument})
-        return response 
 
     #returns a specific order by order id
     def get_order(self, walletId, orderId):
